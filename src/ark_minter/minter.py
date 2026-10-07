@@ -21,7 +21,10 @@ def generate_noid(length: int) -> str:
     return "".join(secrets.choice(BETANUMERIC) for _ in range(length))
 
 
-def mint_ark(naan: int, shoulder: str) -> str:
+def mint_ark(
+    naan: int,
+    shoulder: str,
+) -> str:
     ark_prefix = f"{naan}{shoulder}"
 
     # generate assigned name by appending the base ark with the noid check digit
@@ -32,3 +35,22 @@ def mint_ark(naan: int, shoulder: str) -> str:
     ark_string = f"ark:{naan}/{shoulder}{noid}{check_digit}"
 
     return ark_string
+
+
+"""Django model intergration idea
+
+def default_ark():
+    return mint_ark(naan=12345, shoulder="gg")
+
+class DiscSide(models.Model):
+    ......
+    ark = models.CharField(default = mint_ark)
+"""
+
+"""Django collison check idea
+
+- ark field is set to unique
+- try mint_ark function, if generated noid is a duplicate, it will throw an UNIQUE constraint failed error (IntegrityError)
+- catch error, repeat the action until it succeeds.
+
+"""
