@@ -12,4 +12,4 @@ def test_mint_ark():
 
     # check if assigned name is 8 digit
     # check if assigned name only contains numerical and alphabetical characters (except vowels)
-    assert re.match(r"^12345gg[0-9b-df-hj-np-tv-z]{8}$", ark_string)
+    assert re.match(r"^ark:12345/gg[0-9b-df-hj-np-tv-z]{8}$", ark_string)

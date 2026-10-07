@@ -29,6 +29,6 @@ def mint_ark(naan: int, shoulder: str) -> str:
     base_ark_string = f"{ark_prefix}{noid}"
     check_digit = noid_check_digit(base_ark_string)
 
-    ark_string = f"{base_ark_string}{check_digit}"
+    ark_string = f"ark:{naan}/{shoulder}{noid}{check_digit}"
 
     return ark_string
