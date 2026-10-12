@@ -43,10 +43,11 @@ def mint_ark_by_id(
     ark_prefix = f"{naan}{shoulder}"
 
     if obj_id < noid_length:
+        # throw some kind of error
         return
 
     # generate assigned name by appending the base ark with the noid check digit
-    assigned_name = f"{(noid_length - len(obj_id)) * '0'}{obj_id}"
+    assigned_name = f"{(noid_length - len(str(obj_id))) * '0'}{obj_id}"
     base_ark_string = f"{ark_prefix}{assigned_name}"
     check_digit = noid_check_digit(base_ark_string)
 
